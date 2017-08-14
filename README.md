@@ -1,1 +1,1 @@
-A clock plugin for the JumpFm file manager.
+A plugin for JumpFm that enables history navigation.
