@@ -1,4 +1,4 @@
-import { Panel, Url, PanelListener } from 'jumpfm-api'
+import { JumpFm, Panel, Url, PanelListener } from 'jumpfm-api'
 
 class History implements PanelListener {
     maxSize
@@ -37,22 +37,23 @@ class History implements PanelListener {
 
 }
 
-export const load = (jumpFm) => {
+export const load = (jumpFm: JumpFm) => {
     const panels = jumpFm.panels
     const histories: History[] = panels.map(panel =>
         new History(panel, jumpFm.settings.getNum('historyMaxSize', 20))
     )
 
+    console.log(histories)
     jumpFm.bindKeys('historyBack', ['alt+left'], () => {
-        const i = jumpFm.model.activePanel
-        const url = this.histories[i].back()
+        const i = jumpFm.getActivePanelIndex()
+        const url = histories[i].back()
         url.query.history = true
         panels[i].cd(url)
     }).filterMode()
 
     jumpFm.bindKeys('historyForward', ['alt+right'], () => {
-        const i = jumpFm.model.activePanel
-        const url = this.histories[i].forward()
+        const i = jumpFm.getActivePanelIndex()
+        const url = histories[i].forward()
         url.query.history = true
         panels[i].cd(url)
     }).filterMode()
