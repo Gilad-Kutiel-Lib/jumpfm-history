@@ -1,4 +1,6 @@
-class History {
+import { Panel, Url, PanelListener } from 'jumpfm-api'
+
+class History implements PanelListener {
     maxSize
     history: Url[] = []
     panel: Panel
