@@ -43,7 +43,6 @@ export const load = (jumpFm: JumpFm) => {
         new History(panel, jumpFm.settings.getNum('historyMaxSize', 20))
     )
 
-    console.log(histories)
     jumpFm.bindKeys('historyBack', ['alt+left'], () => {
         const i = jumpFm.getActivePanelIndex()
         const url = histories[i].back()
