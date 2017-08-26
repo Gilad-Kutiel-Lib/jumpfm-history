@@ -1,1 +1,1 @@
-A plugin for JumpFm that enables history navigation.
+A plugin for [JumpFm](http://jumpfm.org/) that enables history navigation.
